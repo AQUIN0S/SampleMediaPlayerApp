@@ -3,6 +3,7 @@ package com.acyonix.samplemediaplayerapp;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.start)
     public void startButtonClicked() {
         mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(MainActivity.this, "I'm done!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @OnClick(R.id.pause)
